@@ -578,27 +578,32 @@ p {
 
 /* ---------- Pricing Box (Big $2/day) ---------- */
 .pricing-box {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto var(--space-xl);
-  background: var(--glass-bg);
-  border: 2px solid rgba(210, 35, 145, 0.3);
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(245, 195, 59, 0.06) 0%, transparent 60%),
+    var(--glass-bg);
+  border: 2px solid rgba(245, 195, 59, 0.2);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
   text-align: center;
   position: relative;
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: var(--shadow-pink);
+  box-shadow:
+    0 0 60px rgba(245, 195, 59, 0.08),
+    0 0 120px rgba(210, 35, 145, 0.05),
+    var(--shadow-md);
 }
 
 .price-label {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--accent-pink);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .price-hero {
@@ -606,66 +611,76 @@ p {
   align-items: baseline;
   justify-content: center;
   gap: 0;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) 0;
 }
 
 .price-dollar {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(4rem, 10vw, 6rem);
   font-weight: 700;
   color: var(--accent-gold);
   line-height: 1;
-  text-shadow: 0 0 30px rgba(245, 195, 59, 0.25);
+  text-shadow: 0 0 40px rgba(245, 195, 59, 0.3);
 }
 
 .price-amount-big {
   font-family: var(--font-heading);
-  font-size: clamp(6rem, 14vw, 9rem);
+  font-size: clamp(10rem, 22vw, 16rem);
   font-weight: 700;
   color: var(--accent-gold);
-  line-height: 0.9;
-  text-shadow: 0 0 40px rgba(245, 195, 59, 0.3);
+  line-height: 0.85;
+  text-shadow:
+    0 0 60px rgba(245, 195, 59, 0.35),
+    0 0 120px rgba(245, 195, 59, 0.15);
   animation: priceGlow 3s ease-in-out infinite;
 }
 
 @keyframes priceGlow {
   0%, 100% {
-    text-shadow: 0 0 20px rgba(245, 195, 59, 0.2);
+    text-shadow:
+      0 0 30px rgba(245, 195, 59, 0.2),
+      0 0 60px rgba(245, 195, 59, 0.08);
   }
   50% {
-    text-shadow: 0 0 50px rgba(245, 195, 59, 0.45), 0 0 80px rgba(245, 195, 59, 0.15);
+    text-shadow:
+      0 0 60px rgba(245, 195, 59, 0.5),
+      0 0 120px rgba(245, 195, 59, 0.2),
+      0 0 180px rgba(245, 195, 59, 0.08);
   }
 }
 
 .price-per {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 600;
   color: var(--accent-gold);
-  opacity: 0.8;
-  margin-left: 0.1em;
+  opacity: 0.85;
+  margin-left: 0.05em;
 }
 
-.price-note {
-  font-size: 1rem;
+.price-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: var(--text-secondary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.02em;
 }
 
 .price-divider {
-  width: 60px;
+  width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
-  margin: 0 auto var(--space-md);
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: 0 auto var(--space-lg);
 }
 
 .price-tradeoff {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 600;
   color: var(--text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 0;
 }
 
@@ -820,59 +835,41 @@ p {
 }
 
 /* ======================================================================
-   LIFESTYLE PHOTO BANNER
+   PHOTO STRIP
    ====================================================================== */
-.lifestyle-banner {
-  position: relative;
+.photo-strip {
   width: 100%;
-  height: 400px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  padding: var(--space-sm) 0;
+}
+
+.photo-strip-track {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.strip-img {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-.lifestyle-banner img {
+.strip-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: top center;
   display: block;
-  filter: brightness(0.5);
+  filter: brightness(0.85);
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-.lifestyle-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-lg);
-  background: linear-gradient(
-    180deg,
-    rgba(26, 26, 26, 0.3) 0%,
-    rgba(26, 26, 26, 0.6) 100%
-  );
-}
-
-.lifestyle-overlay p {
-  font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--text-primary);
-  max-width: 600px;
-  line-height: 1.4;
-  margin-bottom: var(--space-sm);
-  letter-spacing: 0.02em;
-}
-
-.lifestyle-overlay span {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--accent-pink);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.strip-img:hover img {
+  filter: brightness(1);
+  transform: scale(1.04);
 }
 
 /* ======================================================================
@@ -1063,8 +1060,8 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .lifestyle-banner {
-    height: 300px;
+  .strip-img {
+    aspect-ratio: 2 / 3;
   }
 }
 
@@ -1110,8 +1107,12 @@ p {
     padding: var(--space-md) var(--space-sm);
   }
 
-  .lifestyle-banner {
-    height: 240px;
+  .strip-img:nth-child(n+5) {
+    display: none;
+  }
+
+  .strip-img {
+    aspect-ratio: 1 / 1;
   }
 
   .modal-container {
