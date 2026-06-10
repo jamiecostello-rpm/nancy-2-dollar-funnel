@@ -853,7 +853,7 @@ p {
 .strip-img {
   flex: 1 1 0;
   min-width: 0;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
@@ -890,6 +890,21 @@ p {
 .footer .disclaimer {
   font-size: 0.75rem;
   color: #555;
+}
+
+.footer-links {
+  margin-top: var(--space-sm);
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-pink);
 }
 
 /* ======================================================================
@@ -1061,7 +1076,11 @@ p {
   }
 
   .strip-img {
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 1 / 1;
+  }
+
+  .strip-img:nth-child(n+5) {
+    display: none;
   }
 }
 
@@ -1107,7 +1126,7 @@ p {
     padding: var(--space-md) var(--space-sm);
   }
 
-  .strip-img:nth-child(n+5) {
+  .strip-img:nth-child(n+4) {
     display: none;
   }
 
